@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:talkaro_messenger/screens/mobile_layout_screen.dart';
+import 'package:talkaro_messenger/screens/web_layout_screen.dart';
+import 'package:talkaro_messenger/utils/responsive_layout.dart';
+
+
+import 'colors.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Talkaro-Messenger',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor,
       ),
-     
+      home:  ResponsiveLayout(
+        mobileScreenLayout: MobileLayoutScreen(),
+        webScreenLayout: WebLayoutScreen(),
+      ),
     );
   }
 }
